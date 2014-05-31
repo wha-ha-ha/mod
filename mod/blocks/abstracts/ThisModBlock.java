@@ -58,12 +58,12 @@ public abstract class ThisModBlock extends Block {
 	public Icon getBlockTexture(IBlockAccess iba, int x, int y, int z, int face) {
 		TileEntity te = iba.getBlockTileEntity(x, y, z);
 		int meta = iba.getBlockMetadata(x, y, z);
-		int rotation = 3;
+		int rotation = 3; //Default for non-rotatables!
 		if(te != null && te instanceof IFourWayRotatable) {
 			rotation = ((IFourWayRotatable)te).getFacing();
 		}
 		if(textureHelper != null) {
-			return textureHelper.getIcon(3, face, meta); //Default for non-rotatables!
+			return textureHelper.getIcon(rotation, face, meta);
 		}
 		return null;
 	}
